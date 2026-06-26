@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Flour Jars — Floral Cake Specialist · San Jacinto, CA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ivory: #FAF6EF;
+      --ivory-mid: #F2EBE0;
+      --ivory-dark: #E8DDD0;
+      --blush: #E8A0A0;
+      --blush-light: #F5DDD8;
+      --blush-mid: #EDBBB4;
+      --rose: #C96B6B;
+      --rose-dark: #A04444;
+      --sage: #8BAF82;
+      --sage-light: #D4E8CE;
+      --ink: #2C1F1F;
+      --mid: #7A5C5C;
+      --serif: 'Playfair Display', serif;
+      --sans: 'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--ivory);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 48px;
+      background: rgba(250,246,239,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--ivory-dark);
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--rose-dark);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--rose); }
+
+    .nav-cta {
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 11px 26px;
+      background: var(--rose);
+      color: white;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 4px 14px rgba(201,107,107,0.3);
+    }
+
+    .nav-cta:hover { background: var(--rose-dark); transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      padding-top: 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--ivory);
+    }
+
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 80px 56px 80px 64px;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blush-light);
+      color: var(--rose);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 8px 16px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+      width: fit-content;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 4.5vw, 4.8rem);
+      font-weight: 700;
+      line-height: 1.08;
+      margin-bottom: 22px;
+      color: var(--ink);
+    }
+
+    .hero-title .pink { color: var(--rose); font-style: italic; }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--mid);
+      max-width: 400px;
+      margin-bottom: 40px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+
+    .btn-primary {
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 15px 34px;
+      background: var(--rose);
+      color: white;
+      border-radius: 100px;
+      text-decoration: none;
+      box-shadow: 0 5px 18px rgba(201,107,107,0.35);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--rose-dark); transform: translateY(-2px); }
+
+    .btn-outline {
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 15px 34px;
+      border: 2px solid var(--blush-mid);
+      color: var(--rose);
+      border-radius: 100px;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-outline:hover { border-color: var(--rose); background: var(--blush-light); }
+
+    .hero-info-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .info-pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--ivory-mid);
+      border: 1px solid var(--ivory-dark);
+      color: var(--mid);
+      font-size: 0.75rem;
+      padding: 7px 14px;
+      border-radius: 100px;
+    }
+
+    .hero-right {
+      overflow: hidden;
+      background: var(--blush-light);
+      position: relative;
+    }
+
+    .hero-photo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 60% 40%;
+      height: 100%;
+      gap: 3px;
+    }
+
+    .hero-photo-grid .main-photo {
+      grid-column: 1 / 3;
+      overflow: hidden;
+    }
+
+    .hero-photo-grid img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .hero-photo-grid div:hover img { transform: scale(1.04); }
+    .side-photo { overflow: hidden; }
+
+    /* ── MARQUEE ── */
+    .marquee-wrap {
+      background: var(--rose);
+      color: white;
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-flex;
+      animation: marquee 24s linear infinite;
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0 28px;
+    }
+
+    .marquee-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+      flex-shrink: 0;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ── SECTION UTILS ── */
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--rose);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 48px;
+    }
+
+    .section-title em { font-style: italic; color: var(--rose); }
+
+    /* ── OFFERINGS ── */
+    .offerings {
+      padding: 96px 64px;
+      background: white;
+    }
+
+    .offerings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .offering-card {
+      border-radius: 20px;
+      padding: 36px 28px;
+      transition: transform 0.25s, box-shadow 0.25s;
+    }
+
+    .offering-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 14px 36px rgba(0,0,0,0.07);
+    }
+
+    .offering-card.c1 { background: var(--blush-light); }
+    .offering-card.c2 { background: var(--ivory-mid); }
+    .offering-card.c3 { background: var(--sage-light); }
+
+    .offering-emoji { font-size: 2.2rem; margin-bottom: 16px; display: block; }
+
+    .offering-name {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .offering-desc {
+      font-size: 0.86rem;
+      line-height: 1.8;
+      color: var(--mid);
+    }
+
+    /* ── FLAVORS ── */
+    .flavors {
+      padding: 96px 64px;
+      background: var(--ivory);
+    }
+
+    .flavors-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .flavor-box {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 32px;
+      border: 1px solid var(--ivory-dark);
+    }
+
+    .flavor-box h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--rose-dark);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .flavor-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .flavor-tag {
+      background: var(--blush-light);
+      color: var(--rose-dark);
+      font-size: 0.78rem;
+      font-weight: 500;
+      padding: 7px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--blush-mid);
+    }
+
+    .flavor-note {
+      font-size: 0.75rem;
+      color: var(--mid);
+      margin-top: 16px;
+      font-style: italic;
+    }
+
+    /* ── GALLERY ── */
+    .gallery {
+      padding: 96px 64px;
+      background: white;
+    }
+
+    .gallery-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 36px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .g-item {
+      border-radius: 16px;
+      overflow: hidden;
+      aspect-ratio: 1;
+      background: var(--blush-light);
+    }
+
+    .g-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+
+    .g-item:hover img { transform: scale(1.07); }
+    .g-item.tall { aspect-ratio: unset; grid-row: span 2; }
+    .g-item.wide { grid-column: span 2; aspect-ratio: 2/1; }
+
+    /* ── HOW ── */
+    .how {
+      padding: 96px 64px;
+      background: var(--ivory);
+    }
+
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .how-card {
+      background: white;
+      border-radius: 20px;
+      padding: 36px 28px;
+      position: relative;
+      border: 1px solid var(--ivory-dark);
+    }
+
+    .how-num {
+      position: absolute;
+      top: 20px; right: 24px;
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--blush-light);
+      line-height: 1;
+    }
+
+    .how-icon { font-size: 1.8rem; margin-bottom: 16px; display: block; }
+
+    .how-card h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .how-card p {
+      font-size: 0.86rem;
+      line-height: 1.8;
+      color: var(--mid);
+    }
+
+    /* ── PICKUP INFO ── */
+    .pickup {
+      padding: 96px 64px;
+      background: white;
+    }
+
+    .pickup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .pickup-card {
+      background: var(--ivory-mid);
+      border-radius: 20px;
+      padding: 32px 28px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      border: 1px solid var(--ivory-dark);
+    }
+
+    .pickup-icon {
+      font-size: 1.8rem;
+      flex-shrink: 0;
+    }
+
+    .pickup-card h4 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--rose-dark);
+    }
+
+    .pickup-card p {
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--mid);
+    }
+
+    /* ── CAKE CARE ── */
+    .care {
+      padding: 96px 64px;
+      background: var(--ivory);
+    }
+
+    .care-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .care-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px 20px;
+      text-align: center;
+      border: 1px solid var(--ivory-dark);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .care-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.06);
+    }
+
+    .care-icon { font-size: 2rem; margin-bottom: 12px; display: block; }
+
+    .care-card p {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--mid);
+    }
+
+    /* ── BOOKING CTA ── */
+    .booking {
+      margin: 0 64px 96px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--blush-mid) 0%, #D4909C 50%, #C17A8A 100%);
+      padding: 88px 72px;
+      text-align: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .booking::before {
+      content: '🌸🌷🌹🌸🌷';
+      position: absolute;
+      font-size: 6rem;
+      opacity: 0.08;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+      letter-spacing: 20px;
+      pointer-events: none;
+    }
+
+    .booking h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    .booking p {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      opacity: 0.9;
+      max-width: 420px;
+      margin: 0 auto 40px;
+      position: relative;
+    }
+
+    .booking-btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+
+    .btn-white {
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 15px 34px;
+      background: white;
+      color: var(--rose-dark);
+      border-radius: 100px;
+      text-decoration: none;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.12);
+      transition: transform 0.2s;
+    }
+
+    .btn-white:hover { transform: translateY(-2px); }
+
+    .btn-ghost-white {
+      font-size: 0.88rem;
+      font-weight: 500;
+      padding: 15px 34px;
+      border: 2px solid rgba(255,255,255,0.55);
+      color: white;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .btn-ghost-white:hover { background: rgba(255,255,255,0.15); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--ivory-dark);
+      padding: 44px 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--ivory);
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--rose-dark);
+    }
+
+    .footer-center {
+      font-size: 0.78rem;
+      color: var(--mid);
+      text-align: center;
+      line-height: 1.9;
+    }
+
+    .footer-ig a {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--rose);
+      text-decoration: none;
+    }
+
+    /* ── FADE IN ── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1; transform: none; transition: none; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 96px 22px 44px; }
+      .hero-right { height: 65vw; }
+
+      .offerings, .flavors, .gallery, .how, .pickup, .care { padding: 64px 22px; }
+      .offerings-grid, .how-grid { grid-template-columns: 1fr; }
+      .flavors-grid, .pickup-grid { grid-template-columns: 1fr; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .g-item.tall, .g-item.wide { grid-row: span 1; grid-column: span 1; aspect-ratio: 1; }
+      .care-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .booking { margin: 0 16px 64px; padding: 60px 24px; }
+      footer { flex-direction: column; gap: 18px; text-align: center; padding: 36px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo"><img src="logo.png" alt="The Flour Jars" style="height:44px;width:44px;object-fit:cover;border-radius:50%;"> The Flour Jars</a>
+    <ul class="nav-links">
+      <li><a href="#offerings">Menu</a></li>
+      <li><a href="#flavors">Flavors</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#order">Order</a></li>
+    </ul>
+    <a href="#order" class="nav-cta">Place an Order</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <div class="hero-tag">🌷 Floral Cake Specialist · San Jacinto, CA</div>
+      <h1 class="hero-title">Turning flour<br>into <span class="pink">flowers.</span></h1>
+      <p class="hero-sub">Custom cakes & cupcakes handcrafted with love in the Inland Empire. Every order is made from scratch — never mass produced, always one of a kind.</p>
+      <div class="hero-actions">
+        <a href="#order" class="btn-primary">Place an Order</a>
+        <a href="#gallery" class="btn-outline">View Gallery</a>
+      </div>
+      <div class="hero-info-pills">
+        <span class="info-pill">🗓️ Order forms posted monthly</span>
+        <span class="info-pill">🚗 Pick-up only · San Jacinto</span>
+        <span class="info-pill">⏰ Sat pickup 9:30am–12pm</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo-grid">
+        <div class="main-photo">
+          <img src="img4.png" alt="Floral cupcakes" />
+        </div>
+        <div class="side-photo">
+          <img src="img5.png" alt="Custom cake" />
+        </div>
+        <div class="side-photo">
+          <img src="img3.png" alt="Buttercream flowers" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap">
+    <div class="marquee-track">
+      <span class="marquee-item">Custom Cakes <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Floral Buttercream <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Cupcake Boxes <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Birthday Cakes <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Quinceañeras <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Pick-Up · San Jacinto <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Made From Scratch <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Custom Cakes <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Floral Buttercream <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Cupcake Boxes <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Birthday Cakes <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Quinceañeras <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Pick-Up · San Jacinto <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Made From Scratch <span class="marquee-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- OFFERINGS -->
+  <section class="offerings" id="offerings">
+    <p class="section-label fade-up">What we make</p>
+    <h2 class="section-title fade-up">Everything is made<br><em>just for you.</em></h2>
+    <div class="offerings-grid">
+      <div class="offering-card c1 fade-up">
+        <span class="offering-emoji">🎂</span>
+        <h3 class="offering-name">Custom Cakes</h3>
+        <p class="offering-desc">Mini and full-size celebration cakes with hand-piped buttercream florals, themed designs, and hand-lettering for any occasion.</p>
+      </div>
+      <div class="offering-card c2 fade-up">
+        <span class="offering-emoji">🧁</span>
+        <h3 class="offering-name">Cupcake Boxes</h3>
+        <p class="offering-desc">Curated cupcake sets — floral bouquets, animal characters, holiday themes — beautifully boxed and ready to gift or celebrate.</p>
+      </div>
+      <div class="offering-card c3 fade-up">
+        <span class="offering-emoji">🌸</span>
+        <h3 class="offering-name">Combo Sets</h3>
+        <p class="offering-desc">A smash cake paired with matching cupcakes. Perfect for first birthdays, quinceañeras, baby showers, and special celebrations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLAVORS -->
+  <section class="flavors" id="flavors">
+    <p class="section-label fade-up">The menu</p>
+    <h2 class="section-title fade-up">Flavors &amp; <em>fillings.</em></h2>
+    <div class="flavors-grid">
+      <div class="flavor-box fade-up">
+        <h3>🎂 Cake Flavors</h3>
+        <div class="flavor-tags">
+          <span class="flavor-tag">Vanilla Bean</span>
+          <span class="flavor-tag">Strawberry</span>
+          <span class="flavor-tag">Lemon</span>
+          <span class="flavor-tag">Sprinkle Chip</span>
+          <span class="flavor-tag">Oreo</span>
+          <span class="flavor-tag">Coffee</span>
+          <span class="flavor-tag">Chocolate</span>
+        </div>
+      </div>
+      <div class="flavor-box fade-up">
+        <h3>🍓 Fillings</h3>
+        <div class="flavor-tags">
+          <span class="flavor-tag">Strawberry Jam</span>
+          <span class="flavor-tag">Blueberry Jam</span>
+          <span class="flavor-tag">Strawberries & Cream</span>
+          <span class="flavor-tag">Whipped Cookie Butter</span>
+          <span class="flavor-tag">Cookies & Cream</span>
+          <span class="flavor-tag">Caramel</span>
+          <span class="flavor-tag">Raspberry Jam</span>
+          <span class="flavor-tag">Banana Cream</span>
+        </div>
+        <p class="flavor-note">* Jams change by the season — ask about seasonal options!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="gallery-top">
+      <div>
+        <p class="section-label fade-up">Recent orders</p>
+        <h2 class="section-title fade-up" style="margin-bottom:0;">The <em>work.</em></h2>
+      </div>
+      <a href="https://instagram.com/theflourjars" class="btn-outline fade-up" style="white-space:nowrap; align-self:flex-end;">See more →</a>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item tall fade-up">
+        <img src="img8.png" alt="Floral cupcakes" />
+      </div>
+      <div class="g-item fade-up">
+        <img src="img7.png" alt="Custom cake" />
+      </div>
+      <div class="g-item fade-up">
+        <img src="img6.png" alt="Birthday cake" />
+      </div>
+      <div class="g-item fade-up">
+        <img src="img1.png" alt="Cupcake box" />
+      </div>
+      <div class="g-item fade-up">
+        <img src="img2.png" alt="Buttercream flowers" />
+      </div>
+      <div class="g-item wide fade-up">
+        <img src="img3.png" alt="Floral cake" />
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how">
+    <p class="section-label fade-up">The process</p>
+    <h2 class="section-title fade-up">How to <em>order.</em></h2>
+    <div class="how-grid">
+      <div class="how-card fade-up">
+        <span class="how-num">1</span>
+        <span class="how-icon">💬</span>
+        <h3>Reach Out</h3>
+        <p>DM us on Instagram or send a WhatsApp message with your date, theme, and number of guests. We'll check availability quickly.</p>
+      </div>
+      <div class="how-card fade-up">
+        <span class="how-num">2</span>
+        <span class="how-icon">✏️</span>
+        <h3>Confirm Your Order</h3>
+        <p>We'll go over flavors, fillings, design, and pricing. A non-refundable deposit locks in your date — spots fill up fast!</p>
+      </div>
+      <div class="how-card fade-up">
+        <span class="how-num">3</span>
+        <span class="how-icon">🎉</span>
+        <h3>Pick Up & Celebrate</h3>
+        <p>Pick up your order Saturday 9:30am–12pm in San Jacinto, CA. Carefully packaged and ready to wow everyone.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PICKUP INFO -->
+  <section class="pickup" id="info">
+    <p class="section-label fade-up">Good to know</p>
+    <h2 class="section-title fade-up">Order <em>info.</em></h2>
+    <div class="pickup-grid">
+      <div class="pickup-card fade-up">
+        <span class="pickup-icon">📅</span>
+        <div>
+          <h4>Pickup Days</h4>
+          <p>Saturday only · 9:30am – 12pm<br>Closed Sunday & Monday</p>
+        </div>
+      </div>
+      <div class="pickup-card fade-up">
+        <span class="pickup-icon">📋</span>
+        <div>
+          <h4>Order Forms</h4>
+          <p>Order forms are posted monthly on Instagram. Follow us so you don't miss a slot!</p>
+        </div>
+      </div>
+      <div class="pickup-card fade-up">
+        <span class="pickup-icon">💳</span>
+        <div>
+          <h4>Deposit Policy</h4>
+          <p>A deposit is required to secure your order. Please note: deposits are non-refundable.</p>
+        </div>
+      </div>
+      <div class="pickup-card fade-up">
+        <span class="pickup-icon">📍</span>
+        <div>
+          <h4>Location</h4>
+          <p>Pick-up only · San Jacinto, CA<br>Exact address shared after booking.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CAKE CARE GUIDE -->
+  <section class="care">
+    <p class="section-label fade-up">After pickup</p>
+    <h2 class="section-title fade-up">Cake Care <em>Guide.</em></h2>
+    <div class="care-grid">
+      <div class="care-card fade-up">
+        <span class="care-icon">🤲</span>
+        <p>Carry the cake from the <strong>bottom only</strong></p>
+      </div>
+      <div class="care-card fade-up">
+        <span class="care-icon">⚖️</span>
+        <p>Keep it <strong>level</strong> when moving or refrigerating</p>
+      </div>
+      <div class="care-card fade-up">
+        <span class="care-icon">🚗</span>
+        <p>Transport in an <strong>air-conditioned car</strong> away from loose objects</p>
+      </div>
+      <div class="care-card fade-up">
+        <span class="care-icon">🌡️</span>
+        <p><strong>Store in the fridge</strong> until ready to serve</p>
+      </div>
+      <div class="care-card fade-up">
+        <span class="care-icon">☀️</span>
+        <p>Keep away from <strong>sunlight, moisture &amp; heat</strong></p>
+      </div>
+      <div class="care-card fade-up">
+        <span class="care-icon">⏰</span>
+        <p>Take out of fridge <strong>1 hour before eating</strong></p>
+      </div>
+      <div class="care-card fade-up">
+        <span class="care-icon">🎂</span>
+        <p>Use a cake stand <strong>at least 1 inch wider</strong> than the cake</p>
+      </div>
+      <div class="care-card fade-up">
+        <span class="care-icon">🥡</span>
+        <p>Store leftovers in the fridge in an <strong>airtight container</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING CTA -->
+  <div class="booking fade-up" id="order">
+    <h2>Ready to order<br>something beautiful?</h2>
+    <p>Spots fill up fast every month. Reach out today to check availability and get your date locked in.</p>
+    <div class="booking-btns">
+      <a href="https://wa.me/19098675309" class="btn-white">💬 WhatsApp Us</a>
+      <a href="https://instagram.com/theflourjars" class="btn-ghost-white">DM on Instagram</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo"><img src="logo.png" alt="The Flour Jars" style="height:36px;width:36px;object-fit:cover;border-radius:50%;vertical-align:middle;margin-right:8px;"> The Flour Jars</span>
+    <div class="footer-center">
+      San Jacinto, CA · Pick-Up Only · Saturdays 9:30am–12pm<br>
+      © 2025 The Flour Jars · All rights reserved
+    </div>
+    <div class="footer-ig">
+      <a href="https://instagram.com/theflourjars">@theflourjars ↗</a>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
